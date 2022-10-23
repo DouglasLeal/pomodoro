@@ -1,0 +1,165 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body, button{
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+.menu{
+    position: absolute;
+    right: -275px;
+    height: 100vh;
+    width: 275px;
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, .75);
+    z-index: 9999;
+    transition: right .5s;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.input-group label{
+    font-size: 1.5rem;
+}
+
+.input-group input{
+    margin-top: 5px;
+    border-radius: 50px;
+    text-align: center;
+    border-color: aliceblue;
+    padding: 5px 0;
+    font-size: 1.25rem; 
+}
+
+.container{
+    width: 300px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 10px solid black;
+    border-radius: 25px;
+}
+
+.title{
+    text-align: center;
+    padding: 50px 0;
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+}
+
+.display{
+    text-align: center;
+    font-size: 6rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container-buttons{
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button{
+    display: block;
+    width: 125px;
+    height: 50px;
+    margin: 0 15px;   
+    font-size: 1.5rem;
+    border: 3px solid black;
+    background-color: transparent;
+    border-radius: 15px;
+}
+
+.button-menu{
+    z-index: 9999;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 50px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right .5s;
+}
+
+.button-menu span{
+    display: block;
+    width: 30px;
+    height: 5px;
+    margin: 3px 0;
+    border-radius: 25px;
+    background-color: black;
+}
+
+.button-save{
+    margin: 25px auto;
+    color: aliceblue;
+    border-color: aliceblue;
+}
+
+.pomodoro{
+    background-color: tomato;
+}
+
+.long-break{
+    background-color: lightskyblue;
+}
+
+.short-break{
+    background-color: lightgreen;
+}
+
+@media (min-width: 950px){
+    .container{
+        width: 900px;
+        height: 700px;
+        
+    }
+
+    .title{
+        font-size: 3rem;
+    }
+
+    .display{
+        font-size: 10rem;
+        
+    }
+
+    .button{
+        width: 200px;
+        font-size: 2rem;
+    }
+}
+
+.show-menu{
+    right: 0px
+}
+.button-menu.show-menu{
+    right: 295px
+}
+
+.d-none{
+    display: none;
+}

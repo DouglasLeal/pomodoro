@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pomodoro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <div class="button button-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="menu">
+        <div class="input-group">
+            <label for="">Pomodoro</label>
+            <input id="pomodoroTime" type="text" value="15">
+        </div>
+
+        <div class="input-group">
+            <label for="">Pausa Curta</label>
+            <input id="shortBreakTime" type="text" value="5">
+        </div>
+
+        <div class="input-group">
+            <label for="">Pausa Longa</label>
+            <input id="longBreakTime" type="text" value="15">
+        </div>
+
+        <button class="button button-save">Salvar</button>
+    </div>
+
+    <div class="container">
+        <h1 class="title">My Pomodoro</h1>
+
+        <p class="display">15:00</p>
+
+        <div class="container-buttons">
+            <button class="button button-start">Iniciar</button>
+            <button class="button button-pause d-none">Parar</button>
+            <button class="button button-continue d-none">Continuar</button>
+            <button class="button button-restart d-none">Reiniciar</button>
+           
+        </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
