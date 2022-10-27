@@ -113,6 +113,18 @@ body, button{
     background-color: black;
 }
 
+.button-sound{
+    position: absolute;
+    width: 50px !important;
+    top: 25px;
+    right: 100px;
+    transition: right .5s;
+}
+
+.button-sound img{
+    width: 100%;
+}
+
 .button-save{
     margin: 25px auto;
     color: aliceblue;
@@ -158,6 +170,10 @@ body, button{
 }
 .button-menu.show-menu{
     right: 295px
+}
+
+.button-sound.show-menu{
+    right: 355px
 }
 
 .d-none{

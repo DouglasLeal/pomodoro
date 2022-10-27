@@ -5,8 +5,10 @@ let btnContinue = document.querySelector(".button-continue");
 let btnRestart = document.querySelector(".button-restart");
 let display = document.querySelector(".display");
 let btnMenu = document.querySelector(".button-menu");
+let btnSound = document.querySelector(".button-sound");
 let menu = document.querySelector(".menu");
 let btnSave = document.querySelector(".button-save");
+let audio = document.querySelector('audio');
 
 let pomodoroTime = 0;
 let shortBreak = 0;
@@ -59,6 +61,8 @@ function counting(){
                 seconds = 59;
             }else{
                 pause();
+                playAudio();
+
                 btnPause.classList.add("d-none");
                 btnStart.classList.remove("d-none");
                 if(!isPomodoro){
@@ -87,6 +91,16 @@ function updateDisplay(){
 function pause(){
     clearInterval(counter);
     started = false;
+}
+
+function pauseAudio(){
+    audio.pause();
+    btnSound.classList.add("d-none");
+}
+
+function playAudio(){
+    audio.play();
+    btnSound.classList.remove("d-none");
 }
 
 function toggleButtonsOnStartClick(){
@@ -156,6 +170,7 @@ btnSave.onclick = () => {
 
 btnMenu.onclick = () => {
     btnMenu.classList.toggle("show-menu");
+    btnSound.classList.toggle("show-menu");
     menu.classList.toggle("show-menu");
 }
 

@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Ubuntu+Mono&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./assets/css/style.css">
+
+    <link rel="shortcut icon" type="image/png" href="./assets/img/icon.ico">
 </head>
 
 <body>
@@ -19,6 +21,10 @@
         <span></span>
         <span></span>
         <span></span>
+    </div>
+
+    <div onclick="pauseAudio()" class="button button-sound d-none">
+        <img src="./assets/img/audio.png">
     </div>
 
     <div class="menu">
@@ -53,6 +59,10 @@
            
         </div>
     </div>
+
+    <audio loop>
+        <source src="./assets/audio/audio.mp3">
+    </audio>
 
     <script src="./assets/js/script.js"></script>
 </body>
