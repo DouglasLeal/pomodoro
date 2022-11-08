@@ -22,13 +22,7 @@ let isPomodoro = false;
 let counterBreaks = 0;
 let counter = 0;
 
-function setTimes(){
-    pomodoroTime = document.getElementById("pomodoroTime").value;
-    shortBreak = document.getElementById("shortBreakTime").value;
-    longBreak = document.getElementById("longBreakTime").value;
-}
-
-function preparePomodoro(){
+function preparePomodoro() {
     minutes = pomodoroTime;
     seconds = 0;
     body.removeAttribute("class");
@@ -36,41 +30,41 @@ function preparePomodoro(){
     isPomodoro = true;
 }
 
-function prepareShortBreak(){
+function prepareShortBreak() {
     minutes = shortBreak;
     body.removeAttribute("class");
     body.classList.add("short-break");
     isPomodoro = false;
 }
 
-function prepareLongBreak(){
+function prepareLongBreak() {
     minutes = longBreak;
     body.removeAttribute("class");
     body.classList.add("long-break");
     isPomodoro = false;
 }
 
-function counting(){
+function counting() {
     counter = setInterval(() => {
 
-        if(seconds > 0){
+        if (seconds > 0) {
             seconds--;
-        }else{
-            if(minutes > 0){
+        } else {
+            if (minutes > 0) {
                 minutes--;
                 seconds = 59;
-            }else{
+            } else {
                 pause();
                 playAudio();
 
                 btnPause.classList.add("d-none");
                 btnStart.classList.remove("d-none");
-                if(!isPomodoro){
+                if (!isPomodoro) {
                     preparePomodoro();
-                }else if(isPomodoro && counterBreaks < 3){
+                } else if (isPomodoro && counterBreaks < 3) {
                     counterBreaks++;
                     prepareShortBreak();
-                }else{
+                } else {
                     counterBreaks = 0;
                     prepareLongBreak();
                 }
@@ -78,50 +72,50 @@ function counting(){
         }
 
         updateDisplay();
-    }, 1000);
+    }, 10);
 }
 
-function updateDisplay(){
+function updateDisplay() {
     let m = `0${minutes}`;
     let s = `0${seconds}`;
 
     display.innerText = `${m.slice(-2)}:${s.slice(-2)}`;
 }
 
-function pause(){
+function pause() {
     clearInterval(counter);
     started = false;
 }
 
-function pauseAudio(){
+function pauseAudio() {
     audio.pause();
     btnSound.classList.add("d-none");
 }
 
-function playAudio(){
+function playAudio() {
     audio.play();
     btnSound.classList.remove("d-none");
 }
 
-function toggleButtonsOnStartClick(){
+function toggleButtonsOnStartClick() {
     btnStart.classList.add("d-none");
     btnContinue.classList.add("d-none");
     btnPause.classList.remove("d-none");
     btnRestart.classList.remove("d-none");
 }
-function toggleButtonsOnPauseClick(){
+function toggleButtonsOnPauseClick() {
     btnStart.classList.add("d-none");
     btnContinue.classList.remove("d-none");
     btnPause.classList.add("d-none");
     btnRestart.classList.remove("d-none");
 }
-function toggleButtonsOnContinueClick(){
+function toggleButtonsOnContinueClick() {
     btnStart.classList.add("d-none");
     btnContinue.classList.add("d-none");
     btnPause.classList.remove("d-none");
     btnRestart.classList.remove("d-none");
 }
-function toggleButtonsOnRestartClick(){
+function toggleButtonsOnRestartClick() {
     btnStart.classList.remove("d-none");
     btnContinue.classList.add("d-none");
     btnPause.classList.add("d-none");
@@ -129,7 +123,8 @@ function toggleButtonsOnRestartClick(){
 }
 
 btnStart.onclick = () => {
-    if(!started){
+    pauseAudio();
+    if (!started) {
         started = true;
         counting();
     }
@@ -143,7 +138,7 @@ btnPause.onclick = () => {
 }
 
 btnContinue.onclick = () => {
-    if(!started){
+    if (!started) {
         started = true;
         counting();
     }
@@ -154,16 +149,46 @@ btnRestart.onclick = () => {
     reset();
 }
 
-function reset(){
+function reset() {
     toggleButtonsOnRestartClick();
 
     pause();
+    pauseAudio();
     preparePomodoro();
     counterBreaks = 0;
     updateDisplay();
 }
 
+
+function setTimes() {
+    if (localStorage.getItem("dl-pomodoro") != null) {
+        let data = localStorage.getItem("dl-pomodoro").split(",");
+        pomodoroTime = data[0];
+        shortBreak = data[1];
+        longBreak = data[2];
+
+        document.getElementById("pomodoroTime").value = data[0];
+        document.getElementById("shortBreakTime").value = data[1];
+        document.getElementById("longBreakTime").value = data[2];
+    }else{
+        pomodoroTime = document.getElementById("pomodoroTime").value;
+        shortBreak = document.getElementById("shortBreakTime").value;
+        longBreak = document.getElementById("longBreakTime").value;
+    }
+}
+
+function saveLocalStorage() {
+    let dataStorage = [
+        document.getElementById("pomodoroTime").value,
+        document.getElementById("shortBreakTime").value,
+        document.getElementById("longBreakTime").value
+    ];
+
+    localStorage.setItem("dl-pomodoro", dataStorage);
+}
+
 btnSave.onclick = () => {
+    saveLocalStorage();
     setTimes();
     reset();
 }
