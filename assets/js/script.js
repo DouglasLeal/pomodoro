@@ -78,7 +78,7 @@ function counting(){
         }
 
         updateDisplay();
-    }, 1000);
+    }, 10);
 }
 
 function updateDisplay(){

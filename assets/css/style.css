@@ -116,9 +116,11 @@ body, button{
 .button-sound{
     position: absolute;
     width: 50px !important;
-    top: 25px;
-    right: 100px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-80%);
     transition: right .5s;
+    z-index: 9999;
 }
 
 .button-sound img{
